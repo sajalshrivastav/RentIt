@@ -1,7 +1,7 @@
 import React from "react";
 import * as Components from './Components';
 function App() {
-  const [signIn] = React.useState(true);
+  const [signIn, toggle] = React.useState(true);
   return (
     <Components.Container>
       <Components.SingUpContainer signinIn={signIn}
@@ -12,8 +12,7 @@ function App() {
           <Components.Input type='text' placeholder='Name' />
           <Components.Input type='email' placeholder='Email' />
           <Components.Input type='password' placeholder='Password' />
-
-
+          <Components.Button>Sign Up</Components.Button>
 
         </Components.Form>
       </Components.SingUpContainer>
@@ -29,14 +28,28 @@ function App() {
 
         </Components.Form>
       </Components.SignInContainer>
-<Components.OverLayContainer signIn={signIn}>
-  <Components.OverLay signIn={signIn}>
-<Components.Title>Welcome Back!</Components.Title>
-<Components.Paragraph>
-  To Keep Connecting with us please Loginb with your Info
-</Components.Paragraph>
-  </Components.OverLay>
-</Components.OverLayContainer>
+      <Components.OverLayContainer signIn={signIn}>
+        <Components.OverLay signIn={signIn}>
+          <Components.LeftOverLayPanel signinIn={signIn}>
+
+            <Components.Title>Welcome Back!</Components.Title>
+            <Components.Paragraph>
+              To Keep Connecting with us please Login with your Info
+            </Components.Paragraph>
+            <Components.GhostButton onclick={() => toggle(true)}>
+              Sign In
+            </Components.GhostButton>
+          </Components.LeftOverLayPanel>
+          <Components.RightOverLayPanel signinIn={signIn}>
+            <Components.Title>Hello, Friends</Components.Title>
+            <Components.Paragraph> Enter your Detail and Start your Journey with us   </Components.Paragraph>
+            <Components.GhostButton onclick={() => toggle(false)}>
+              Sign Up
+            </Components.GhostButton>
+         
+          </Components.RightOverLayPanel>
+        </Components.OverLay>
+      </Components.OverLayContainer>
     </Components.Container>
   )
 }
